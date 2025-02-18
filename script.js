@@ -15,11 +15,39 @@ document.querySelector('.buttons-container').addEventListener('click', (e) => {
         numero1 = parseFloat(inputs[0].value);
         numero2 = parseFloat(inputs[1].value);
         operacion = e.target.id;
-        
+
         // Para verificar que funciona
-        console.log('Número 1:', numero1);
-        console.log('Número 2:', numero2);
-        console.log('Operación:', operacion);
+        if (isNaN(numero1) || isNaN(numero2)) {
+            console.log("Por favor, ingresa números válidos.");
+            return;
+        }
+
+        // Realizar la operación
+        let resultado;
+        switch (operacion) {
+            case 'sumar':
+                resultado = numero1 + numero2;
+                console.log(`El resultado de ${numero1} + ${numero2} = ${resultado}`);
+                break;
+            case 'restar':
+                resultado = numero1 - numero2;
+                console.log(`El resultado de ${numero1} - ${numero2} = ${resultado}`);
+                break;
+            case 'multiplicar':
+                resultado = numero1 * numero2;
+                console.log(`El resultado de ${numero1} * ${numero2} = ${resultado}`);
+                break;
+            case 'dividir':
+                if (numero2 === 0) {
+                    console.log("No se puede dividir por cero.");
+                } else {
+                    resultado = numero1 / numero2;
+                    console.log(`El resultado de ${numero1} / ${numero2} = ${resultado}`);
+                }
+                break;
+            default:
+                console.log("Operación no válida.");
+        }
     }
 });
 
